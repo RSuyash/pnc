@@ -1,3 +1,0 @@
-{
-  "buildCommand": "ls -la && cd pnc-web && npm install && npm run build"
-}
