@@ -10,6 +10,17 @@ interface SubProjectDetailPageProps {
   };
 }
 
+
+export async function generateStaticParams() {
+  const soeeProject = PROJECTS_DATA.find(p => p.id === 'soee');
+  if (!soeeProject || !soeeProject.subProjects) {
+    return [];
+  }
+  return soeeProject.subProjects.map(subProject => ({
+    subProjectId: subProject.id,
+  }));
+}
+
 const SubProjectDetailPage: React.FC<SubProjectDetailPageProps> = ({ params }) => {
   const project = PROJECTS_DATA.find(p => p.link === params.projectId);
   const subProject = project?.subProjects?.find(sp => sp.link === params.subProjectId);

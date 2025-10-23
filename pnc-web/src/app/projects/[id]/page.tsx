@@ -9,6 +9,13 @@ interface ProjectDetailPageProps {
   };
 }
 
+
+export async function generateStaticParams() {
+  return PROJECTS_DATA.map(project => ({
+    id: project.id,
+  }));
+}
+
 const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ params }) => {
   const project = PROJECTS_DATA.find(p => p.link === params.id);
 
