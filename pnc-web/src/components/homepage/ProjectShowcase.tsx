@@ -19,7 +19,7 @@ const projects = [
     id: 'byoc',
     name: 'Bring Your Own Cup (BYOC)',
     description: PROJECTS_DATA.find(p => p.id === 'byoc')?.description || 'The successful campus-wide movement for plastic reduction, saving thousands of single-use cups since its pilot launch.',
-    imageUrl: "/images/projects/project-byoc.jpg",
+    imageUrl: "/images/projects/byoc/boyc-showcase.jpg",
     isFlagship: false,
     link: '/projects/byoc',
   },

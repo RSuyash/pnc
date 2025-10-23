@@ -75,7 +75,7 @@ const ProjectsPage: React.FC = () => {
                            backgroundImage: project.id === 'soee' 
                              ? "url('/images/projects/soee-banner.jpg')" 
                              : project.id === 'byoc'
-                             ? "url('/images/projects/project-byoc.jpg')"
+                             ? "url('/images/projects/byoc/boyc-showcase.jpg')"
                              : project.id === 'campus-green-audit'
                              ? "url('/images/projects/project-campus-green-audit.jpg')"
                              : project.id === 'ruturang-2.0'
