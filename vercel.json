@@ -1,0 +1,3 @@
+{
+  "buildCommand": "cd pnc-web && npm install && npm run build"
+}
