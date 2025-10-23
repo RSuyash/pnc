@@ -35,7 +35,7 @@ const projects = [
     id: 'ruturang-2.0',
     name: 'Ruturang 2.0: Seasonal Nature Exploration',
     description: 'Explore Pune’s hills with expert naturalist and Geologist Siddharth Binniwale, discovering wonders hidden in the changing landscape.',
-    imageUrl: "/images/projects/project-eco-education.jpg",
+    imageUrl: "/images/projects/ruturang-2/ruturang-2-observation.jpg",
     isFlagship: false,
     link: '/projects/ruturang-2.0',
   },

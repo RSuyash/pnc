@@ -10,7 +10,7 @@ const TeamCTA = () => {
           </h2>
           <p className="text-xl text-emerald-100 mb-8 max-w-3xl mx-auto">
             Be part of a passionate community dedicated to creating a sustainable future. 
-            We're always looking for motivated individuals to join our mission.
+            We&apos;re always looking for motivated individuals to join our mission.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button className="

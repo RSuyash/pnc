@@ -25,11 +25,26 @@ const BYOCPage: React.FC = () => {
         {/* Project Hero Section */}
         <section className="relative py-20 md:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center" 
-               style={{ backgroundImage: "url('/images/projects/project-byoc.jpg')", opacity: 0.15 }}></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/70 to-teal-100/90"></div>
+               style={{ backgroundImage: "url('/images/projects/project-byoc.jpg')", opacity: 0.3 }}></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/50 to-teal-100/60"></div>
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto">
+              {/* Breadcrumbs */}
+              <div className="flex items-center text-sm mb-6">
+                <Link href="/" className="text-gray-700 hover:text-emerald-700 transition-colors duration-200 font-medium">
+                  Home
+                </Link>
+                <ChevronRight className="h-4 w-4 text-gray-600/70 mx-2 flex-shrink-0" />
+                <Link href="/projects" className="text-gray-700 hover:text-emerald-700 transition-colors duration-200 font-medium">
+                  Projects
+                </Link>
+                <ChevronRight className="h-4 w-4 text-gray-600/70 mx-2 flex-shrink-0" />
+                <span className="text-gray-900 font-medium">
+                  {project.title}
+                </span>
+              </div>
+              
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
                   <Leaf className="w-8 h-8 text-emerald-700" />

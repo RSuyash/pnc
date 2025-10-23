@@ -78,8 +78,8 @@ const ProjectsPage: React.FC = () => {
                              ? "url('/images/projects/project-byoc.jpg')"
                              : project.id === 'campus-green-audit'
                              ? "url('/images/projects/project-campus-green-audit.jpg')"
-                             : project.id === 'eco-education'
-                             ? "url('/images/projects/project-eco-education.jpg')"
+                             : project.id === 'ruturang-2.0'
+                             ? "url('/images/projects/ruturang-2/ruturang-2-observation.jpg')"
                              : "url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop')" 
                          }}></div>
                     
