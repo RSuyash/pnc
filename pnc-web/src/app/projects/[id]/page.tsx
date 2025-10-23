@@ -26,7 +26,14 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ params }) => {
   }
 
   // Define icons for different project types
-  const getIconComponent = (icon: any) => {
+  const getIconComponent = (icon: React.ComponentType<{ className?: string }> | { name?: string } | string) => {
+    // If the icon is already a React component, just return it with props
+    if (typeof icon === 'function') {
+      const IconComponent = icon as React.ComponentType<{ className?: string }>;
+      return <IconComponent className="w-8 h-8" />;
+    }
+    
+    // For backwards compatibility with string/object icons
     const icons: Record<string, React.ReactNode> = {
       Zap: <Zap className="w-8 h-8" />,
       Droplet: <Droplet className="w-8 h-8" />,
@@ -36,8 +43,8 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ params }) => {
     };
 
     // Try to match the icon by name
-    const iconKey = icon?.name || icon;
-    return icons[iconKey] || icons.Zap; // Default to Zap icon
+    const iconKey = typeof icon === 'object' && icon ? icon.name || icon : icon;
+    return icons[iconKey as string] || icons.Zap; // Default to Zap icon
   };
 
   const iconComponent = getIconComponent(project.icon);
@@ -98,8 +105,8 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ params }) => {
                     <div className="mb-8">
                       <h3 className="text-xl font-bold text-gray-900 mb-4">Impact Metrics</h3>
                       <div className="grid grid-cols-2 gap-4">
-                        {project.details.metrics.map((metric, index) => (
-                          <div key={index} className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
+                        {project.details.metrics.map((metric, _index) => (
+                          <div key={_index} className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
                             <div className="text-2xl font-bold text-emerald-700">{metric.value}</div>
                             <div className="text-sm text-gray-600">{metric.label}</div>
                           </div>
@@ -170,7 +177,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ params }) => {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                {project.subProjects.map((subProject, index) => {
+                {project.subProjects.map((subProject, _index) => {
                   const subIcon = getIconComponent(subProject.icon);
                   
                   return (

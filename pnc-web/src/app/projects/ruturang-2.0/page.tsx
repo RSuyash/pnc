@@ -75,7 +75,7 @@ const Ruturang2Page: React.FC = () => {
                   <div>
                     <h4 className="text-xl font-bold text-gray-900 mb-4">About This Event</h4>
                     <p className="text-gray-700 mb-6">
-                      Prithvi Nature Club, the state-recognized Green Club of MIT-WPU, is thrilled to bring you the second trail of the RutuRang series! This season, explore Pune’s hills with expert naturalist and Geologist Siddharth Binniwale and discover the wonders hidden in the changing landscape.
+                      Prithvi Nature Club, the state-recognized Green Club of MIT-WPU, is thrilled to bring you the second trail of the RutuRang series! This season, explore Pune&apos;s hills with expert naturalist and Geologist Siddharth Binniwale and discover the wonders hidden in the changing landscape.
                     </p>
                     
                     <div className="mb-6">
@@ -143,7 +143,7 @@ const Ruturang2Page: React.FC = () => {
                         </div>
                         <div>
                           <h3 className="font-bold text-lg text-gray-900">Pollinators & Biodiversity</h3>
-                          <p className="text-gray-700">Discover the crucial role of pollinators and the rich biodiversity in Pune's hills.</p>
+                          <p className="text-gray-700">Discover the crucial role of pollinators and the rich biodiversity in Pune&apos;s hills.</p>
                         </div>
                       </div>
                       
@@ -200,7 +200,7 @@ const Ruturang2Page: React.FC = () => {
                 Join Ruturang 2.0: Nature Exploration
               </h2>
               <p className="text-xl mb-8 text-emerald-100 max-w-2xl mx-auto">
-                Come with curiosity, leave with nature’s stories!
+                Come with curiosity, leave with nature&apos;s stories!
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link 

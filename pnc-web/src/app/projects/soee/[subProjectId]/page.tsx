@@ -28,7 +28,14 @@ const SubProjectDetailPage: React.FC<SubProjectDetailPageProps> = ({ params }) =
   }
 
   // Define icons for different project types
-  const getIconComponent = (icon: any) => {
+  const getIconComponent = (icon: React.ComponentType<{ className?: string }> | { name?: string } | string) => {
+    // If the icon is already a React component, just return it with props
+    if (typeof icon === 'function') {
+      const IconComponent = icon as React.ComponentType<{ className?: string }>;
+      return <IconComponent className="w-8 h-8" />;
+    }
+    
+    // For backwards compatibility with string/object icons
     const icons: Record<string, React.ReactNode> = {
       Zap: <Zap className="w-8 h-8" />,
       Droplet: <Droplet className="w-8 h-8" />,
@@ -38,8 +45,8 @@ const SubProjectDetailPage: React.FC<SubProjectDetailPageProps> = ({ params }) =
     };
 
     // Try to match the icon by name
-    const iconKey = icon?.name || icon;
-    return icons[iconKey] || icons.Zap; // Default to Zap icon
+    const iconKey = typeof icon === 'object' && icon ? icon.name || icon : icon;
+    return icons[iconKey as string] || icons.Zap; // Default to Zap icon
   };
 
   const iconComponent = getIconComponent(subProject.icon);
@@ -85,8 +92,8 @@ const SubProjectDetailPage: React.FC<SubProjectDetailPageProps> = ({ params }) =
                     <div className="mb-8">
                       <h3 className="text-xl font-bold text-gray-900 mb-4">Impact Metrics</h3>
                       <div className="grid grid-cols-2 gap-4">
-                        {subProject.details.metrics.map((metric, index) => (
-                          <div key={index} className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
+                        {subProject.details.metrics.map((metric, _index) => (
+                          <div key={_index} className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
                             <div className="text-2xl font-bold text-emerald-700">{metric.value}</div>
                             <div className="text-sm text-gray-600">{metric.label}</div>
                           </div>
