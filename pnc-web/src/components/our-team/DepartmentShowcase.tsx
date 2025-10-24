@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 type TeamYear = 'active' | 'inactive';
 
@@ -12,7 +13,6 @@ interface Member {
   name: string;
   role: string;
   email: string;
-  phone: string;
   interests: string;
   skills: string;
   isHead: boolean;
@@ -38,7 +38,6 @@ const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'act
           name: "Shreya Joshi",
           role: "Head",
           email: "1332250538@mitwpu.edu.in",
-          phone: "9711674126",
           interests: "Climate Science, Conservation Technology",
           skills: "Leadership, Project Management",
           isHead: true,
@@ -49,7 +48,6 @@ const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'act
           name: "Arnav Ingle",
           role: "Member",
           email: "1332250630@mitwpu.edu.in",
-          phone: "7769881026",
           interests: "Avian Ecology, Climate Science, Conservation Technology, Environmental Policy",
           skills: "Data Analysis, GIS, Project Management",
           isHead: false,
@@ -60,7 +58,6 @@ const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'act
           name: "Previous Media Head",
           role: "Head",
           email: "",
-          phone: "",
           interests: "",
           skills: "",
           isHead: true,
@@ -77,7 +74,6 @@ const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'act
           name: "Aditya Roy",
           role: "Head",
           email: "",
-          phone: "",
           interests: "",
           skills: "",
           isHead: true,
@@ -88,7 +84,6 @@ const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'act
           name: "Chinmay Kadam",
           role: "Member",
           email: "",
-          phone: "",
           interests: "",
           skills: "",
           isHead: false,
@@ -99,7 +94,6 @@ const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'act
           name: "Previous Research Head",
           role: "Head",
           email: "",
-          phone: "",
           interests: "",
           skills: "",
           isHead: true,
@@ -170,10 +164,24 @@ const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'act
                 <div key={member.id} className="flex items-start p-4 bg-white/50 rounded-xl border border-white/50 hover:shadow-md transition-all duration-300">
                   <div className="bg-gray-200 border-2 border-dashed rounded-xl w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
                     {member.name === "Shreya Joshi" && (
-                      <img src="/images/team/Media_head.png" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                      <Image 
+                        src="/images/team/Media_head.png" 
+                        alt={member.name} 
+                        width={48} 
+                        height={48} 
+                        className="rounded-xl w-full h-full object-cover" 
+                        priority={false}
+                      />
                     )}
                     {member.name === "Aditya Roy" && (
-                      <img src="/images/team/Research_Head.png" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                      <Image 
+                        src="/images/team/Research_Head.png" 
+                        alt={member.name} 
+                        width={48} 
+                        height={48} 
+                        className="rounded-xl w-full h-full object-cover" 
+                        priority={false}
+                      />
                     )}
                     {!(member.name === "Shreya Joshi" || member.name === "Aditya Roy") && (
                       <span className="text-lg">👥</span>
@@ -190,11 +198,7 @@ const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'act
                           <span className="truncate">{member.email.split('@')[0]}...</span>
                         </p>
                       )}
-                      {member.phone && (
-                        <p className="text-xs text-gray-700 flex items-center">
-                          <span className="mr-1">📱</span> {member.phone}
-                        </p>
-                      )}
+
                     </div>
                     
                     {member.interests && (

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const TeamDirectory = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -121,7 +122,7 @@ const TeamDirectory = () => {
     {
       id: 10,
       name: "Krishnandu Sarkar",
-      role: "Research Lead",
+      role: "Research Head",
       department: "Research",
       email: "",
       phone: "",
@@ -295,40 +296,124 @@ const TeamDirectory = () => {
               <div className="flex items-center mb-4">
                 <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
                   {member.name === "Soham Sonawane" && member.status === "Active" && (
-                    <img src="/images/team/soham.png" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/soham.png" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={member.name === "Soham Sonawane"} 
+                    />
                   )}
                   {member.name === "Sharvari Tate" && member.status === "Active" && (
-                    <img src="/images/team/sharvari.png" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/sharvari.png" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={member.name === "Sharvari Tate"} 
+                    />
                   )}
                   {member.name === "Prajakta Jadhav" && member.status === "Active" && (
-                    <img src="/images/team/prajakta.png" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/prajakta.png" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {member.name === "Suyash Rahegaonkar" && member.status === "Active" && (
-                    <img src="/images/team/suyash.png" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/suyash.png" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {member.name === "Anagha Purohit" && member.status === "Inactive" && (
-                    <img src="/images/team/president_24-25.PNG" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/president_24-25.PNG" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {member.name === "Jui Dicholkar" && member.status === "Inactive" && (
-                    <img src="/images/team/media_head_24-25.PNG" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/media_head_24-25.PNG" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {member.name === "Priya Kadam" && member.status === "Inactive" && (
-                    <img src="/images/team/vice_president.PNG" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/vice_president.PNG" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {member.name === "Parth Borkar" && member.status === "Inactive" && (
-                    <img src="/images/team/treasurer_24_25.PNG" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/treasurer_24_25.PNG" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {member.name === "Saartha Kamble" && member.status === "Inactive" && (
-                    <img src="/images/team/secretary_24_25.PNG" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/secretary_24-25.PNG" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {member.name === "Krishnandu Sarkar" && member.status === "Inactive" && (
-                    <img src="/images/team/research_head_24-25.PNG" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/research_head_24-25.PNG" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {member.name === "Shreya Joshi" && member.status === "Active" && (
-                    <img src="/images/team/Media_head.png" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/Media_head.png" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {member.name === "Aditya Roy" && member.status === "Active" && (
-                    <img src="/images/team/Research_Head.png" alt={member.name} className="rounded-xl w-full h-full object-cover" />
+                    <Image 
+                      src="/images/team/Research_Head.png" 
+                      alt={member.name} 
+                      width={64} 
+                      height={64} 
+                      className="rounded-xl w-full h-full object-cover" 
+                      priority={false}
+                    />
                   )}
                   {!(member.name === "Soham Sonawane" || member.name === "Sharvari Tate" || member.name === "Prajakta Jadhav" || member.name === "Suyash Rahegaonkar" || member.name === "Anagha Purohit" || member.name === "Jui Dicholkar" || member.name === "Priya Kadam" || member.name === "Parth Borkar" || member.name === "Saartha Kamble" || member.name === "Krishnandu Sarkar" || member.name === "Shreya Joshi" || member.name === "Aditya Roy") && (
                     <span className="text-lg">👤</span>
@@ -347,19 +432,10 @@ const TeamDirectory = () => {
                     <span className="mr-2">📧</span> {member.email}
                   </p>
                 )}
-                {member.phone && (
-                  <p className="text-sm text-gray-800 flex items-center">
-                    <span className="mr-2">📱</span> {member.phone}
-                  </p>
-                )}
+
               </div>
               
-              {member.interests && (
-                <div className="mt-4">
-                  <p className="text-sm font-medium text-gray-900">Interests:</p>
-                  <p className="text-sm text-gray-800">{member.interests}</p>
-                </div>
-              )}
+
             </div>
           ))}
         </div>
