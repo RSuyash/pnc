@@ -1,6 +1,6 @@
 import React from 'react';
 import { PROJECTS_DATA } from '@/data/projects';
-import { Zap, Droplet, Users, BookOpen, Leaf, ChevronRight, Clock, Globe, Award } from 'lucide-react';
+import { Users, BookOpen, ChevronRight, Globe } from 'lucide-react';
 import Link from 'next/link';
 
 const CampusGreenAuditPage: React.FC = () => {

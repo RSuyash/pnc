@@ -1,7 +1,7 @@
-import Header from '@/components/layout/Header';
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import ConditionalLayout from '@/components/common/ConditionalLayout';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,8 +30,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfairDisplay.variable} font-sans antialiased overflow-x-hidden bg-white dark:bg-gray-900`}
       >
-        <Header />
-        <main className="relative z-0">{children}</main>
+        <ConditionalLayout>
+          <main className="relative z-0">{children}</main>
+        </ConditionalLayout>
       </body>
     </html>
   );

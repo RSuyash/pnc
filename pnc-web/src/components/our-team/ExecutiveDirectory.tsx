@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { TEAM_DATA, TeamMember } from '@/data/team';
 
 type TeamYear = 'active' | 'inactive';
 
@@ -13,7 +14,7 @@ const ExecutiveDirectory: React.FC<ExecutiveDirectoryProps> = ({ teamYear = 'act
   const [hoveredMember, setHoveredMember] = useState<number | null>(null);
   
   // Executive Committee members (current and previous)
-  const executiveMembers = [
+  const executiveMembers: TeamMember[] = [
     // Current Executive Committee (25-26)
     {
       id: 1,
@@ -110,30 +111,6 @@ const ExecutiveDirectory: React.FC<ExecutiveDirectoryProps> = ({ teamYear = 'act
       futureCareer: "",
       skills: "",
       image: "/images/team/secretary_24_25.PNG",
-      status: "Inactive"
-    },
-    {
-      id: 9,
-      name: "Jui Dicholkar",
-      role: "Media Lead",
-      department: "Media",
-      email: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      image: "/images/team/media_lead_24-25.jpg",
-      status: "Inactive"
-    },
-    {
-      id: 10,
-      name: "Krishnandu Sarkar",
-      role: "Research Lead",
-      department: "Research",
-      email: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      image: "/images/team/research_lead_24-25.jpg",
       status: "Inactive"
     }
   ];

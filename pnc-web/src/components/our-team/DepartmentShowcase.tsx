@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { TEAM_DATA, TeamMember } from '@/data/team';
 
 type TeamYear = 'active' | 'inactive';
 
@@ -8,98 +9,29 @@ interface DepartmentShowcaseProps {
   teamYear?: TeamYear;
 }
 
-interface Member {
-  id: number;
-  name: string;
-  role: string;
-  email: string;
-  interests: string;
-  skills: string;
-  isHead: boolean;
-  status: 'Active' | 'Inactive';
-}
-
 interface Department {
   name: string;
   description: string;
-  members: Member[];
+  members: TeamMember[];
 }
 
 const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'active' }) => {
   const [activeTab, setActiveTab] = useState('media');
   
+  // Filter members based on department
+  const mediaMembers = TEAM_DATA.filter(member => member.department === 'Media');
+  const researchMembers = TEAM_DATA.filter(member => member.department === 'Research');
+  
   const departments: Record<string, Department> = {
     media: {
       name: "Media & Communications",
       description: "Responsible for content creation, visual storytelling, and community engagement across all platforms",
-      members: [
-        {
-          id: 1,
-          name: "Shreya Joshi",
-          role: "Head",
-          email: "1332250538@mitwpu.edu.in",
-          interests: "Climate Science, Conservation Technology",
-          skills: "Leadership, Project Management",
-          isHead: true,
-          status: 'Active'
-        },
-        {
-          id: 2,
-          name: "Arnav Ingle",
-          role: "Member",
-          email: "1332250630@mitwpu.edu.in",
-          interests: "Avian Ecology, Climate Science, Conservation Technology, Environmental Policy",
-          skills: "Data Analysis, GIS, Project Management",
-          isHead: false,
-          status: 'Active'
-        },
-        {
-          id: 3,
-          name: "Previous Media Head",
-          role: "Head",
-          email: "",
-          interests: "",
-          skills: "",
-          isHead: true,
-          status: 'Inactive'
-        }
-      ]
+      members: mediaMembers
     },
     research: {
       name: "Research & Innovation",
       description: "Focuses on scientific inquiry and innovative solutions to advance our environmental mission",
-      members: [
-        {
-          id: 1,
-          name: "Aditya Roy",
-          role: "Head",
-          email: "",
-          interests: "",
-          skills: "",
-          isHead: true,
-          status: 'Active'
-        },
-        {
-          id: 2,
-          name: "Chinmay Kadam",
-          role: "Member",
-          email: "",
-          interests: "",
-          skills: "",
-          isHead: false,
-          status: 'Active'
-        },
-        {
-          id: 3,
-          name: "Previous Research Head",
-          role: "Head",
-          email: "",
-          interests: "",
-          skills: "",
-          isHead: true,
-          status: 'Inactive'
-        }
-      ]
+      members: researchMembers
     }
   };
 
@@ -163,27 +95,16 @@ const DepartmentShowcase: React.FC<DepartmentShowcaseProps> = ({ teamYear = 'act
               {filteredDepartments[activeTab].members.map((member) => (
                 <div key={member.id} className="flex items-start p-4 bg-white/50 rounded-xl border border-white/50 hover:shadow-md transition-all duration-300">
                   <div className="bg-gray-200 border-2 border-dashed rounded-xl w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
-                    {member.name === "Shreya Joshi" && (
+                    {member.image ? (
                       <Image 
-                        src="/images/team/Media_head.png" 
+                        src={member.image} 
                         alt={member.name} 
                         width={48} 
                         height={48} 
                         className="rounded-xl w-full h-full object-cover" 
                         priority={false}
                       />
-                    )}
-                    {member.name === "Aditya Roy" && (
-                      <Image 
-                        src="/images/team/Research_Head.png" 
-                        alt={member.name} 
-                        width={48} 
-                        height={48} 
-                        className="rounded-xl w-full h-full object-cover" 
-                        priority={false}
-                      />
-                    )}
-                    {!(member.name === "Shreya Joshi" || member.name === "Aditya Roy") && (
+                    ) : (
                       <span className="text-lg">👥</span>
                     )}
                   </div>

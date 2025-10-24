@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { TEAM_DATA, TeamMember } from '@/data/team';
 import Image from 'next/image';
 
 const TeamDirectory = () => {
@@ -7,192 +8,7 @@ const TeamDirectory = () => {
   const [hoveredMember, setHoveredMember] = useState<number | null>(null);
   const [teamYear, setTeamYear] = useState<'all' | 'active' | 'inactive'>('all'); // all, active (25-26), inactive (24-25)
   
-  // Team data including current and previous members
-  const teamMembers = [
-    // Current Executive Committee (25-26)
-    {
-      id: 1,
-      name: "Soham Sonawane",
-      role: "President",
-      department: "Executive",
-      email: "s12233050007@gmail.com",
-      phone: "9833712026",
-      interests: "Aquatic Ecosystems, Avian Ecology, Botany, Climate Science, Conservation Technology, Entomology, Environmental Policy, Herpetology",
-      futureCareer: "Academic Research, Corporate Sustainability, Environmental Consultancy, Government Policy, Undecided",
-      skills: "Data Analysis, GIS, Grant Writing, Leadership, Project Management, Public Speaking, Scientific Writing",
-      status: "Active"
-    },
-    {
-      id: 2,
-      name: "Sharvari Tate",
-      role: "Secretary",
-      department: "Executive",
-      email: "1332250378@mitwpu.edu.in",
-      phone: "8767261835",
-      interests: "Aquatic Ecosystems, Climate Science, Conservation Technology, Environmental Policy",
-      futureCareer: "Corporate Sustainability, Environmental Consultancy, Government Policy",
-      skills: "Data Analysis, GIS, Grant Writing, Leadership, Project Management, Public Speaking, Scientific Writing",
-      status: "Active"
-    },
-    {
-      id: 3,
-      name: "Prajakta Jadhav",
-      role: "Vice President",
-      department: "Executive",
-      email: "",
-      phone: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      status: "Active"
-    },
-    {
-      id: 4,
-      name: "Suyash Rahegaonkar",
-      role: "Treasurer",
-      department: "Executive",
-      email: "1332250296@mitwpu.edu.in",
-      phone: "9665278779",
-      interests: "Climate Science, Environmental Policy",
-      futureCareer: "Academic Research, Corporate Sustainability, Environmental Consultancy, Government Policy, Science Communication",
-      skills: "Data Analysis, GIS, Grant Writing, Leadership, Project Management, Public Speaking, Scientific Writing",
-      status: "Active"
-    },
-    // Previous Team Members (24-25)
-    {
-      id: 5,
-      name: "Anagha Purohit",
-      role: "Former President",
-      department: "Executive",
-      email: "",
-      phone: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      status: "Inactive"
-    },
-    {
-      id: 6,
-      name: "Jui Dicholkar",
-      role: "Media Lead",
-      department: "Media",
-      email: "",
-      phone: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      status: "Inactive"
-    },
-    {
-      id: 7,
-      name: "Priya Kadam",
-      role: "Vice - President",
-      department: "Executive",
-      email: "",
-      phone: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      status: "Inactive"
-    },
-    {
-      id: 8,
-      name: "Parth Borkar",
-      role: "Treasurer",
-      department: "Executive",
-      email: "",
-      phone: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      status: "Inactive"
-    },
-    {
-      id: 9,
-      name: "Saartha Kamble",
-      role: "Secretary",
-      department: "Executive",
-      email: "",
-      phone: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      status: "Inactive"
-    },
-    {
-      id: 10,
-      name: "Krishnandu Sarkar",
-      role: "Research Head",
-      department: "Research",
-      email: "",
-      phone: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      status: "Inactive"
-    },
-    // Current Team Members (25-26)
-    {
-      id: 11,
-      name: "Shreya Joshi",
-      role: "Head",
-      department: "Media",
-      email: "1332250538@mitwpu.edu.in",
-      phone: "9711674126",
-      interests: "Climate Science, Conservation Technology",
-      futureCareer: "Conservation Field Work, Corporate Sustainability, Environmental Consultancy",
-      skills: "Leadership, Project Management",
-      status: "Active"
-    },
-    {
-      id: 12,
-      name: "Arnav Ingle",
-      role: "Member",
-      department: "Media",
-      email: "1332250630@mitwpu.edu.in",
-      phone: "7769881026",
-      interests: "Avian Ecology, Climate Science, Conservation Technology, Environmental Policy",
-      futureCareer: "Environmental Consultancy",
-      skills: "Data Analysis, GIS, Project Management",
-      status: "Active"
-    },
-    {
-      id: 13,
-      name: "Jayashri Donne",
-      role: "Member",
-      department: "Media",
-      email: "1332250127@mitwpu.edu.in",
-      phone: "7498110899",
-      interests: "Aquatic Ecosystems, Botany, Environmental Policy, Herpetology",
-      futureCareer: "Undecided",
-      skills: "Grant Writing, Project Management, Scientific Writing",
-      status: "Active"
-    },
-    {
-      id: 14,
-      name: "Aditya Roy",
-      role: "Head",
-      department: "Research",
-      email: "",
-      phone: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      status: "Active"
-    },
-    {
-      id: 15,
-      name: "Chinmay Kadam",
-      role: "Member",
-      department: "Research",
-      email: "",
-      phone: "",
-      interests: "",
-      futureCareer: "",
-      skills: "",
-      status: "Active"
-    }
-  ];
+  const teamMembers: TeamMember[] = TEAM_DATA;
 
   const departments = [
     { id: 'all', name: 'All Members' },
@@ -219,18 +35,18 @@ const TeamDirectory = () => {
   }
 
   return (
-    <section className="py-16">
+    <section className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-serif font-bold text-center text-gray-900 mb-4">Our Team</h2>
-        <p className="text-center text-gray-800 text-lg mb-8 max-w-2xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-center text-gray-900 mb-3 sm:mb-4">Our Team</h2>
+        <p className="text-center text-gray-800 text-base sm:text-lg mb-6 sm:mb-8 max-w-xl sm:max-w-2xl mx-auto">
           Dedicated individuals working together to create a sustainable future.
         </p>
         
         {/* Team Year Toggle */}
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex bg-white/80 rounded-xl p-1 shadow">
+        <div className="flex justify-center mb-6 sm:mb-8">
+          <div className="inline-flex bg-white/80 rounded-lg sm:rounded-xl p-1 shadow">
             <button
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+              className={`px-4 py-1.5 sm:px-5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
                 teamYear === 'all'
                   ? 'bg-emerald-600 text-white shadow'
                   : 'text-gray-800 hover:bg-white'
@@ -240,7 +56,7 @@ const TeamDirectory = () => {
               All Teams
             </button>
             <button
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+              className={`px-4 py-1.5 sm:px-5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
                 teamYear === 'active'
                   ? 'bg-emerald-600 text-white shadow'
                   : 'text-gray-800 hover:bg-white'
@@ -250,7 +66,7 @@ const TeamDirectory = () => {
               Current Team (25-26)
             </button>
             <button
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+              className={`px-4 py-1.5 sm:px-5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
                 teamYear === 'inactive'
                   ? 'bg-emerald-600 text-white shadow'
                   : 'text-gray-800 hover:bg-white'
@@ -263,12 +79,12 @@ const TeamDirectory = () => {
         </div>
         
         {/* Department Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
           {departments.map((dept) => (
             <button
               key={dept.id}
               className={`
-                px-6 py-3 rounded-full text-base font-medium transition-all duration-300
+                px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm sm:text-base font-medium transition-all duration-300
                 ${activeFilter === dept.id
                   ? 'bg-emerald-600 text-white shadow-lg'
                   : 'bg-white/80 text-gray-800 hover:bg-white shadow'}
@@ -281,26 +97,26 @@ const TeamDirectory = () => {
         </div>
         
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
           {filteredMembers.map((member, index) => (
             <div
               key={member.id}
               className={`
-                bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-lg border border-white/50
+                bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-lg border border-white/50
                 transition-all duration-500 transform
                 ${hoveredMember === index ? 'scale-105 ring-2 ring-emerald-500/50' : 'hover:scale-[1.02]'}
               `}
               onMouseEnter={() => setHoveredMember(index)}
               onMouseLeave={() => setHoveredMember(null)}
             >
-              <div className="flex items-center mb-4">
-                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
+              <div className="flex items-center mb-3 sm:mb-4">
+                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
                   {member.name === "Soham Sonawane" && member.status === "Active" && (
                     <Image 
                       src="/images/team/soham.png" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={member.name === "Soham Sonawane"} 
                     />
@@ -309,8 +125,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/sharvari.png" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={member.name === "Sharvari Tate"} 
                     />
@@ -319,8 +135,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/prajakta.png" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -329,8 +145,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/suyash.png" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -339,8 +155,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/president_24-25.PNG" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -349,8 +165,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/media_head_24-25.PNG" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -359,8 +175,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/vice_president.PNG" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -369,8 +185,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/treasurer_24_25.PNG" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -379,8 +195,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/secretary_24-25.PNG" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -389,8 +205,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/research_head_24-25.PNG" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -399,8 +215,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/Media_head.png" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -409,8 +225,8 @@ const TeamDirectory = () => {
                     <Image 
                       src="/images/team/Research_Head.png" 
                       alt={member.name} 
-                      width={64} 
-                      height={64} 
+                      width={56} 
+                      height={56} 
                       className="rounded-xl w-full h-full object-cover" 
                       priority={false}
                     />
@@ -419,17 +235,17 @@ const TeamDirectory = () => {
                     <span className="text-lg">👤</span>
                   )}
                 </div>
-                <div className="ml-4">
-                  <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-emerald-700 font-medium">{member.role}</p>
-                  <p className="text-sm text-gray-600">{member.department}</p>
+                <div className="ml-3 sm:ml-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900">{member.name}</h3>
+                  <p className="text-emerald-700 font-medium text-sm sm:text-base">{member.role}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">{member.department}</p>
                 </div>
               </div>
               
-              <div className="mt-4 space-y-2">
+              <div className="mt-3 sm:mt-4 space-y-1.5 sm:space-y-2">
                 {member.email && (
-                  <p className="text-sm text-gray-800 flex items-center">
-                    <span className="mr-2">📧</span> {member.email}
+                  <p className="text-xs sm:text-sm text-gray-800 flex items-center">
+                    <span className="mr-1 sm:mr-2">📧</span> {member.email}
                   </p>
                 )}
 

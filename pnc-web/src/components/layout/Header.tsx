@@ -1,10 +1,10 @@
 "use client";
 
 import Link from 'next/link';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { FiMenu, FiX, FiUsers, FiFeather, FiHome, FiChevronDown, FiGrid, FiHeart, FiGlobe, FiChevronsRight } from 'react-icons/fi';
+import { FiMenu, FiX, FiUsers, FiFeather, FiHome, FiChevronDown, FiGrid, FiHeart, FiGlobe } from 'react-icons/fi';
 
 const navLinks = [
   { href: '/', label: 'Home', icon: <FiHome /> },
@@ -22,180 +22,23 @@ const Header: React.FC = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [logoModuleHovered, setLogoModuleHovered] = useState(false);
-  const [rightModuleHovered, setRightModuleHovered] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Determine if we're on pages with lighter backgrounds that need darker text
-  const isOnLightBgPage = pathname === '/our-team' || pathname.startsWith('/projects');
+  // Determine if we're on pages with lighter hero backgrounds that need contrasting header
+  // On these pages, we want a darker header with light text
+  const isOnLightHeroPage = pathname === '/our-team' || pathname.startsWith('/projects');
 
   return (
     <>
-      {/* Left logo module that stays visible when scrolled */}
-      {scrolled && (
-        <div 
-          className={`
-            fixed left-6 top-6 z-50 
-            transition-all duration-500 ease-out
-            w-16 h-16 flex items-center justify-center
-          `}
-          onMouseEnter={() => setLogoModuleHovered(true)}
-          onMouseLeave={() => setLogoModuleHovered(false)}
-        >
-          <Link href="/" className="flex items-center justify-center w-full h-full">
-            <Image 
-              src="/header-logo.png" 
-              alt="Prithvi Nature Club Logo" 
-              width={64} 
-              height={64} 
-              className="object-contain"
-            />
-          </Link>
-          
-          {/* Expanded menu on hover */}
-          <div className={`
-            absolute left-full top-0 ml-3 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg 
-            rounded-xl shadow-2xl p-4 min-w-[200px] z-50
-            transition-all duration-300 ease-out
-            ${logoModuleHovered ? 'opacity-100 visible translate-x-0' : 'opacity-0 invisible -translate-x-2'}
-          `}>
-            <div className="flex items-center mb-3">
-              <Image 
-                src="/header-logo.png" 
-                alt="PNC Logo" 
-                width={32} 
-                height={32} 
-                className="object-contain mr-2"
-              />
-              <span className="font-bold text-sm text-gray-800 dark:text-white">Prithvi Nature Club</span>
-            </div>
-            <div className="space-y-2">
-              {navLinks.map(({ href, label, icon }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  className={`
-                    flex items-center w-full p-2 rounded-lg
-                    text-gray-700 dark:text-gray-300
-                    hover:text-emerald-700 dark:hover:text-emerald-300
-                    hover:bg-emerald-50/60 dark:hover:bg-emerald-900/20
-                    transition-all duration-200
-                  `}
-                >
-                  <span className="mr-2">{icon}</span>
-                  <span className="text-sm">{label}</span>
-                </Link>
-              ))}
-              <div className="border-t border-gray-200/50 dark:border-gray-700/50 my-2"></div>
-              {actionLinks.map(({ href, label, icon }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  className={`
-                    flex items-center w-full p-2 rounded-lg
-                    text-gray-700 dark:text-gray-300
-                    hover:text-emerald-700 dark:hover:text-emerald-300
-                    hover:bg-emerald-50/60 dark:hover:bg-emerald-900/20
-                    transition-all duration-200
-                  `}
-                >
-                  <span className="mr-2">{icon}</span>
-                  <span className="text-sm">{label}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Right navigation module that appears when scrolled */}
-      {scrolled && (
-        <div 
-          className={`
-            fixed right-6 top-6 z-40 
-            bg-white/70 dark:bg-gray-900/70 backdrop-blur-md 
-            rounded-2xl shadow-lg p-2
-            transition-all duration-500 ease-out
-            flex flex-col items-center space-y-1
-          `}
-          onMouseEnter={() => setRightModuleHovered(true)}
-          onMouseLeave={() => setRightModuleHovered(false)}
-        >
-          <div className="relative">
-            {navLinks.map(({ href, icon }, index) => (
-              <Link
-                key={href}
-                href={href}
-                className={`
-                  w-10 h-10 rounded-full
-                  flex items-center justify-center
-                  text-gray-700 dark:text-gray-300
-                  hover:text-emerald-700 dark:hover:text-emerald-300
-                  hover:bg-white/60 dark:hover:bg-gray-800/60
-                  transition-all duration-300 mb-1
-                  ${rightModuleHovered ? 'w-12 h-12' : ''}
-                `}
-              >
-                {icon}
-              </Link>
-            ))}
-            <div className="w-full border-t border-gray-200/50 dark:border-gray-700/50 my-1"></div>
-            {actionLinks.map(({ href, icon }, index) => (
-              <Link
-                key={href}
-                href={href}
-                className={`
-                  w-10 h-10 rounded-full
-                  flex items-center justify-center
-                  text-gray-700 dark:text-gray-300
-                  hover:text-emerald-700 dark:hover:text-emerald-300
-                  hover:bg-white/60 dark:hover:bg-gray-800/60
-                  transition-all duration-300 mb-1
-                  ${rightModuleHovered ? 'w-12 h-12' : ''}
-                `}
-              >
-                {icon}
-              </Link>
-            ))}
-          </div>
-          
-          {/* Hover indicator */}
-          {!rightModuleHovered && (
-            <div className="absolute -right-1 -top-1 w-2 h-2 bg-emerald-500 rounded-full animate-ping"></div>
-          )}
-        </div>
-      )}
-
-      {/* Original header - only visible when not scrolled */}
-      <header 
-        ref={navRef}
-        className={`
-          fixed top-4 left-4 right-4 z-30 
-          transition-all duration-500 ease-out
-          ${scrolled 
-            ? 'opacity-0 pointer-events-none scale-95' 
-            : 'opacity-100 pointer-events-auto bg-transparent backdrop-blur-3xl py-4 rounded-2xl'}
-        `}
-      >
-        <nav className="container mx-auto px-2 sm:px-4 flex justify-between items-center">
-          {/* Plain logo without backgrounds */}
-          <div className={`
-            flex items-center space-x-3 text-xl sm:text-2xl font-bold
-            transition-all duration-500 ease-out
-          `}>
-            <Link 
-              href="/" 
-              className="flex items-center space-x-3 text-xl sm:text-2xl font-bold transition-all duration-300 hover:opacity-90"
-            >
+      {/* Main header with dynamic styling */}
+      <header className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 ease-out ${
+        isOnLightHeroPage 
+          ? 'bg-gray-800/80 dark:bg-gray-900/80' 
+          : 'bg-white/70 dark:bg-gray-900/70'
+      } backdrop-blur-md py-4 rounded-2xl`}>
+        <nav className="container mx-auto px-4 flex justify-between items-center">
+          {/* Logo section */}
+          <div className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3 text-xl font-bold transition-all duration-300 hover:opacity-90">
               <Image 
                 src="/header-logo.png" 
                 alt="Prithvi Nature Club Logo" 
@@ -203,30 +46,28 @@ const Header: React.FC = () => {
                 height={48} 
                 className="object-contain"
               />
-              <span className={`hidden sm:block font-bold ${isOnLightBgPage && !scrolled ? 'text-gray-900' : 'text-gray-900 dark:text-white'} drop-shadow-lg`}>
+              <span className={`hidden sm:block font-bold ${isOnLightHeroPage ? 'text-white' : 'text-gray-900 dark:text-white'} drop-shadow-lg`}>
                 Prithvi Nature Club
               </span>
             </Link>
           </div>
 
-          {/* Desktop Navigation - only visible when not scrolled */}
-          <div className={`
-            hidden md:flex items-center space-x-1
-            transition-all duration-500 ease-out
-          `}>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
             {navLinks.map(({ href, label, icon }) => (
               <Link
                 href={href}
                 key={label}
                 className={`
                   flex items-center text-sm sm:text-base 
-                  ${(isOnLightBgPage && !scrolled) 
-                    ? 'text-gray-900 hover:text-emerald-700' 
-                    : 'text-gray-800 dark:text-gray-200 hover:text-emerald-700 dark:hover:text-emerald-300'} 
+                  ${pathname === href 
+                    ? 'text-emerald-700 dark:text-emerald-400 font-semibold' 
+                    : (isOnLightHeroPage 
+                      ? 'text-white hover:text-emerald-200' 
+                      : 'text-gray-800 dark:text-gray-200 hover:text-emerald-700 dark:hover:text-emerald-300')} 
                   font-medium px-3 py-2 rounded-lg 
                   transition-all duration-300
-                  hover:bg-white/30 dark:hover:bg-gray-800/30 
-                  backdrop-blur-sm
+                  hover:bg-white/50 dark:hover:bg-gray-800/50 
                 `}
               >
                 <span className="mr-2 text-base">{icon}</span>
@@ -234,18 +75,17 @@ const Header: React.FC = () => {
               </Link>
             ))}
             
-            {/* Enhanced Dropdown for Actions */}
+            {/* Dropdown for Action Links */}
             <div className="relative">
               <button
                 className={`
                   flex items-center text-sm sm:text-base 
-                  ${(isOnLightBgPage && !scrolled) 
-                    ? 'text-gray-900 hover:text-emerald-700' 
+                  ${isOnLightHeroPage 
+                    ? 'text-white hover:text-emerald-200' 
                     : 'text-gray-800 dark:text-gray-200 hover:text-emerald-700 dark:hover:text-emerald-300'} 
                   font-medium px-3 py-2 rounded-lg 
                   transition-all duration-300
-                  hover:bg-white/30 dark:hover:bg-gray-800/30 
-                  backdrop-blur-sm
+                  hover:bg-white/50 dark:hover:bg-gray-800/50 
                 `}
                 onClick={() => setDropdownOpen(v => !v)}
                 aria-haspopup="true"
@@ -296,12 +136,12 @@ const Header: React.FC = () => {
           <button
             className={`
               md:hidden text-xl 
-              ${(isOnLightBgPage && !scrolled) 
-                ? 'text-gray-900' 
+              ${isOnLightHeroPage 
+                ? 'text-white' 
                 : 'text-gray-800 dark:text-gray-200'} 
               focus:outline-none p-2 rounded-lg 
-              hover:bg-white/30 dark:hover:bg-gray-800/30 
-              backdrop-blur-sm transition-all duration-300
+              hover:bg-white/50 dark:hover:bg-gray-800/50 
+              transition-all duration-300
             `}
             onClick={() => {
               setMenuOpen(v => !v);
@@ -317,7 +157,7 @@ const Header: React.FC = () => {
         {menuOpen && (
           <div className={`
             md:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl 
-            shadow-xl rounded-2xl
+            shadow-xl rounded-b-2xl
             transform transition-all duration-300 ease-out
           `}>
             <div className="container mx-auto px-4 py-4 flex flex-col space-y-2">
@@ -329,7 +169,7 @@ const Header: React.FC = () => {
                     flex items-center text-gray-800 dark:text-gray-200 
                     py-3 font-medium hover:text-emerald-700 dark:hover:text-emerald-300 
                     rounded-lg transition-all duration-300
-                    hover:bg-white/30 dark:hover:bg-gray-700/30 backdrop-blur-sm
+                    hover:bg-white/50 dark:hover:bg-gray-700/50 
                     border-b border-gray-100/30 dark:border-gray-700/30 last:border-b-0
                   `}
                   onClick={() => setMenuOpen(false)}
@@ -339,7 +179,7 @@ const Header: React.FC = () => {
                 </Link>
               ))}
               
-              <div className="pt-2 space-y-2">
+              <div className="pt-2 space-y-2 pb-4">
                 {actionLinks.map(({ href, label }) => (
                   <Link
                     href={href}
@@ -347,7 +187,7 @@ const Header: React.FC = () => {
                     className={`
                       block py-3 px-4 rounded-lg text-center
                       text-gray-800 dark:text-gray-200
-                      bg-white/30 dark:bg-gray-700/30
+                      bg-white/50 dark:bg-gray-700/50
                       hover:bg-emerald-50/60 dark:hover:bg-emerald-900/20
                       transition-all duration-300
                     `}

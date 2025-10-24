@@ -5,9 +5,6 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import { PROJECTS_DATA } from '@/data/projects';
 import { ChevronRight } from 'lucide-react';
 
-const MIT_GREEN = '#108040';
-const MIT_BLUE = '#1a56db';
-
 const ChandeVillagePage: React.FC = () => {
   const soeeProject = PROJECTS_DATA.find(p => p.id === 'soee');
   const chandeProject = soeeProject?.subProjects?.find(p => p.id === 'chande');
