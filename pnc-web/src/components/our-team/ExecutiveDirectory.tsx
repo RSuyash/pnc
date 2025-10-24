@@ -177,7 +177,7 @@ const ExecutiveDirectory: React.FC<ExecutiveDirectoryProps> = ({ teamYear = 'act
                 <div className="flex flex-col items-center text-center">
                   <div className="w-16 h-16 mb-2 rounded-full overflow-hidden">
                     <Image
-                      src={member.image}
+                      src={member.image || "/images/placeholders/placeholder-logo.svg"}
                       alt={`${member.name} - ${member.role}`}
                       width={64}
                       height={64}
