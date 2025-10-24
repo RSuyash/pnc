@@ -20,6 +20,13 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  // Notion integration files - allow any types since we're dealing with dynamic Notion API data
+  {
+    files: ["src/lib/notion.ts", "src/app/api/notion/**/*.ts", "src/components/notion/**/*.tsx"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  }
 ];
 
 export default eslintConfig;
