@@ -407,7 +407,7 @@ const VisitorDashboard: React.FC = () => (
     <div className="bg-white rounded-xl shadow-md p-8 border border-emerald-100/50 mb-8 text-center">
       <h2 className="text-2xl font-bold text-gray-900 mb-4">Welcome to Prithvi Nature Club!</h2>
       <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-        You're currently viewing our platform as a visitor. 
+        You&apos;re currently viewing our platform as a visitor. 
         Join us as a member, volunteer, or partner to access exclusive features and contribute to our mission.
       </p>
       <div className="flex flex-col sm:flex-row justify-center gap-4">

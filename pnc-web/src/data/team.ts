@@ -6,6 +6,7 @@ export interface TeamMember {
   email: string;
   interests?: string;
   skills?: string;
+  futureCareer?: string;
   status: 'Active' | 'Inactive'; // Active for current (25-26), Inactive for previous (24-25)
   image?: string;
   isHead?: boolean;

@@ -16,7 +16,7 @@ const MessagesPage: React.FC = () => {
       id: 2,
       sender: "EC Team",
       title: "Monthly Meeting Reminder",
-      content: "Don't forget about the monthly executive committee meeting this Friday.",
+      content: "Don&apos;t forget about the monthly executive committee meeting this Friday.",
       time: "1 day ago",
       read: true
     },
@@ -90,8 +90,8 @@ const MessagesPage: React.FC = () => {
             <div className="text-gray-700 mb-6">
               <p>Hi Alex,</p>
               <p className="mt-3">I hope this message finds you well. I wanted to reach out about a potential collaboration on our upcoming conservation project in the coastal region. Given your expertise in marine ecosystems, I believe your insights would be invaluable to the initiative.</p>
-              <p className="mt-3">The project aims to restore critical habitats and monitor marine biodiversity in partnership with the local community. We're looking for passionate individuals to join our efforts and make a meaningful impact.</p>
-              <p className="mt-3">Would you be interested in discussing this opportunity further? I'd be happy to arrange a meeting at your convenience.</p>
+              <p className="mt-3">The project aims to restore critical habitats and monitor marine biodiversity in partnership with the local community. We&apos;re looking for passionate individuals to join our efforts and make a meaningful impact.</p>
+              <p className="mt-3">Would you be interested in discussing this opportunity further? I&apos;d be happy to arrange a meeting at your convenience.</p>
               <p className="mt-6">Best regards,<br />Sarah Johnson</p>
             </div>
             <div className="flex space-x-3">

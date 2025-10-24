@@ -245,11 +245,11 @@ const BecomeAPartnerPage: React.FC = () => {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
               <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-8 shadow-md border border-emerald-100/50">
-                <div className="text-emerald-700 text-2xl mb-4">"</div>
+                <div className="text-emerald-700 text-2xl mb-4">&quot;</div>
                 <p className="text-gray-700 text-lg leading-relaxed mb-6">
                   Partnering with Prithvi Nature Club has allowed us to authentically connect with our community while 
                   demonstrating our commitment to environmental sustainability. The collaboration has been mutually beneficial 
-                  and has strengthened our brand's values.
+                  and has strengthened our brand&apos;s values.
                 </p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gray-300 mr-4"></div>
@@ -261,10 +261,10 @@ const BecomeAPartnerPage: React.FC = () => {
               </div>
               
               <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-8 shadow-md border border-emerald-100/50">
-                <div className="text-emerald-700 text-2xl mb-4">"</div>
+                <div className="text-emerald-700 text-2xl mb-4">&quot;</div>
                 <p className="text-gray-700 text-lg leading-relaxed mb-6">
                   Our partnership with the club has helped us engage with environmentally conscious consumers while 
-                  supporting meaningful conservation projects. It's been a perfect alignment with our corporate values.
+                  supporting meaningful conservation projects. It&apos;s been a perfect alignment with our corporate values.
                 </p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gray-300 mr-4"></div>
